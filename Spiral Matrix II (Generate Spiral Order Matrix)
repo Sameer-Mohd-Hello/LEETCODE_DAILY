@@ -1,0 +1,62 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> arr1(n,vector<int>(n));
+        int element=1;
+        int a=n*n;
+        int id=0;
+        int top=0;
+        int bottom=n-1;
+        int left=0;
+        int right=n-1;
+        while(element>=1 && element<=a){
+            if(id==0){
+                for(int i=left;i<=right;i++){
+                    arr1[top][i]=element++;
+                }
+                top++;
+            }
+            if(id==1){
+                for(int i=top;i<=bottom;i++){
+                    arr1[i][right]=element++;
+                }
+                right--;
+            }
+            if(id==2){
+                for(int i=right;i>=left;i--){
+                    arr1[bottom][i]=element++;
+                }
+                bottom--;
+            }
+            if(id==3){
+                for(int i=bottom;i>=top;i--){
+                    arr1[i][left]=element++;
+                }
+                left++;
+            }
+            id=(id+1)%4;
+        }
+        
+        return arr1;
+    }
+    };
+int main(){
+    int n=3;
+    Solution obj;
+    vector<vector<int>> result=obj.generateMatrix(3);
+    cout<<"the n*n spiral is : ";
+    for (int i = 0; i< n; i++)
+    {
+        cout<<endl;
+        for (int j=0;j<n;j++)
+        {
+        cout<<result[i][j]<<" ";
+        }
+    }
+    
+
+}
