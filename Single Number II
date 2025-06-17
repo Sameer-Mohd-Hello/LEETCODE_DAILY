@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+class Solution
+{
+public:
+    int singleNumber(vector<int>nums)
+    {
+        unordered_map<int, int> arr;
+        for (int num : nums)
+        {
+            ++arr[num];
+        }
+        for (auto &pair : arr)
+        {
+            if (pair.second == 1)
+                return pair.first;
+        }
+        return -1;
+    }
+};
+int main()
+{
+    Solution obj;
+    int result = obj.singleNumber({
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        3,
+        4,
+        4,
+    });
+    cout << result;
+    return 0;
+}
