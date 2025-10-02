@@ -57,6 +57,6 @@ int main()
     int qty = 2;
     int qual = 3;
     int res = obj.minDays(nums, qty, qual);
-    cout << "the smallest divisor to given threshhold (" << res << ") is -> " << res;
+    cout << "the buquete (" << res << ") can be made in days -> " << res;
     return 0;
 }
